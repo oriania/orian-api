@@ -8,10 +8,10 @@ app.use(cors());
 
 // Cliente OpenAI usando variável da Vercel
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Rota principal da API ORIAN IA
+// Rota principal da IA ORIAN
 app.post("/api/orian", async (req, res) => {
   try {
     const { mensagem } = req.body;
@@ -22,7 +22,7 @@ app.post("/api/orian", async (req, res) => {
         {
           role: "system",
           content:
-            "Você é o ORIAN IA, uma inteligência empática, futurista, amigável e muito sábia."
+            "Você é ORIAN IA, uma inteligência empática, futurista, amigável e muito sábia."
         },
         {
           role: "user",
@@ -34,17 +34,17 @@ app.post("/api/orian", async (req, res) => {
     res.json({
       resposta: completion.choices[0].message.content
     });
+
   } catch (erro) {
     console.error("Erro ORIAN IA:", erro);
-    res.status(500).json({ erro: "Erro no servidor ORIAN IA." });
+    res.status(500).json({ erro: "Erro interno na API ORIAN IA." });
   }
 });
 
 // Rota de teste
 app.get("/", (req, res) => {
-  res.json({ status: "API ORIAN IA online 🚀" });
+  res.json({ status: "API ORIAN IA online ✨" });
 });
 
-// Porta local (não usada na Vercel)
+// Export necessário para funcionar na Vercel
 export default app;
-
