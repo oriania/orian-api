@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     }
 
     const client = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
+      apiKey: apikey: process.env.OPENAI_API
     });
 
     const completion = await client.chat.completions.create({
